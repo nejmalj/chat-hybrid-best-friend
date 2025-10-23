@@ -1,12 +1,47 @@
-TP - Chat is my best hybrid friend
-Dans ce TP, vous allez devoir créer une petite application, simple en terme de fonctionnalités. L'objectif est de démontrer votre inutilité à coder lorsque l'on commence à maitriser une technologie. Vous serez noté sur votre capacité à livrer une application fonctionnelle rapidement (7 points). Vous devrez également démontrer votre capacité à maintenir un projet propre et bien documenté avec un Readme.md pertinent (3 points). Et vous serez noté sur votre utilisation pertinente d'un LLM comme assistant (10 points).
+Ce projet utilise React Native avec Expo. 
 
-Livrables
-Projet Github contenant le code source de l'application. Un fichier Readme détaillé sur la stack technique utilisée, les fonctionnalités de l'application et la manière de la lancer. Un fichier llm-prompts.md contenant les questions posées à votre assistant LLM et ses réponses. Un partage des différents channels de communication dans ChatGPT avec la fonctionnalité Share à rajouter dans le fichier llm-prompts.md
+**Fonctionnalités :**
+- Splash screen à l'ouverture de l'app puis redirection vers Home
+- Menu principal avec les boutons de redirection vers les écrans Chat et Dog ainsi qu'un bouton Quit pour quitter l'app
+- Un écran Chat qui montre un PNG de chat qui génère un miaulement quand on appuie dessus
+- Un écran Dog avec une image de chien générée à partir d'une API, regénérable avec un bouton, et qui écrit un SMS "Je n'aime pas les chats" au 06.06.06.06.06 au clic,
+- Un écran Clicker (menu de navigation) qui comptabilise les clics sur les images du chat et du chien, et permet de réinitialiser les compteurs
+- Un écran Map (menu de navigation) qui affiche une carte dézoomée au niveau de la France avec la localisation de l'utilisateur
 
-Fonctionnalités
-L'application doit permettre d'afficher un splash screen avec un message de bienvenue : "Bienvenue sur Chat is my best hybrid friend". Le fond d'écran doit être bleu clair si la batterie de l'appareil est supérieure à 50% et saumon si elle est inférieure à 50%. La luminosité de l'écran doit être réglée assez élévée pour que le message soit bien visible. Sinon baisser la luminosité. Un menu permettra de choisir entre 3 options : "Chat", "Dog" et "Quit". Quit = ferme l'application. Chat = affiche un chat Dog = lance un appel à une API pour afficher une image de chien
+**Comment lancer le projet :**
+Après avoir cloné, le projet, il faut installer les dépendances avec la commande `npm install`
 
-Quand on clique sur le chat, un son de chat doit être joué. Quand on clique sur le chien, prépare un sms avec le texte "Je n'aime pas les chats" à envoyer au numéro 06 06 06 06 06 Un autre onglet, Carte, permettra d'afficher votre position sur une carte, je veux au moins voir toulon et paris sur la carte sans devoir dézoomer.
+**Lancer l'app avec Expo Go :**
+Pour accéder à l'app avec Expo Go, lancer la commande `npx expo start`
 
-Stockez le nombre de clics sur le chat et le chien et affichez-les dans un menu "Clicker" avec un bouton pour réinitialiser les compteurs. Le nombre de clics doit être sauvegardé pour un prochain lancement de l'application.
+**Build l'app sur Android/iOS :**
+*Installer MapView pour Expo :*
+`npx expo install react-native-maps`
+
+*Clé d'API Google Maps :*
+Dans le fichier app.json, à la configuration d'expo, rajouter votre clé d'api google maps :
+"android": {
+"config": {
+"googleMaps": {
+"apiKey": "VOTRE_GOOGLE_MAPS_API_KEY",
+},
+},
+}
+
+*Installez EAS CLI :* 
+`npm install -g eas-cli`
+
+*Connectez-vous à votre compte Expo :* 
+`npx eas login`
+
+*Configurez le projet pour EAS Build :* 
+`npx eas build:configure`
+
+*Créez le Development Build :*
+Pour Android : `npx eas build --profile development --platform android`
+Pour Android : `npx eas build --profile development --platform ios`
+EAS va vous donner une URL pour télécharger et installer l'application sur votre téléphone ou simulateur/émulateur.
+
+*Lancez votre application :*
+Une fois l'application installée sur votre appareil, lancez le serveur de développement avec la commande : `npx expo start --dev-client`
+Scannez le QR code depuis l'application que vous venez d'installer.
