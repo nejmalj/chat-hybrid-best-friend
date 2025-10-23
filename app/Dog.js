@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity, ActivityIndicator, Alert } from "react-native";
 import * as SMS from "expo-sms";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function DogScreen() {
     const [dogImage, setDogImage] = useState(null);
     const [loading, setLoading] = useState(true);
+    const DOG_KEY = "@dog_count";
 
-    // 🔹 Fonction pour récupérer une image de chien via l'API dog.ceo
     const fetchDog = async () => {
         try {
             setLoading(true);
@@ -20,20 +21,22 @@ export default function DogScreen() {
         }
     };
 
-    // 🔹 Prépare un SMS avec le texte donné
+    useEffect(() => {
+        fetchDog();
+    }, []);
+
     const sendSMS = async () => {
         const isAvailable = await SMS.isAvailableAsync();
         if (isAvailable) {
             await SMS.sendSMSAsync(["0606060606"], "Je n'aime pas les chats");
+
+            // Incrémenter le compteur Dog
+            const count = parseInt(await AsyncStorage.getItem(DOG_KEY), 10) || 0;
+            await AsyncStorage.setItem(DOG_KEY, (count + 1).toString());
         } else {
             Alert.alert("Erreur", "La fonction SMS n’est pas disponible sur cet appareil.");
         }
     };
-
-    // Charger un chien dès l'ouverture
-    useEffect(() => {
-        fetchDog();
-    }, []);
 
     return (
         <View style={styles.container}>
@@ -59,38 +62,10 @@ export default function DogScreen() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#fff",
-        padding: 20,
-    },
-    title: {
-        fontSize: 26,
-        fontWeight: "bold",
-        marginBottom: 20,
-    },
-    image: {
-        width: 250,
-        height: 250,
-        borderRadius: 10,
-        marginBottom: 20,
-    },
-    instruction: {
-        fontSize: 16,
-        color: "#555",
-        marginBottom: 15,
-    },
-    refreshButton: {
-        backgroundColor: "#007BFF",
-        paddingVertical: 12,
-        paddingHorizontal: 25,
-        borderRadius: 8,
-    },
-    refreshText: {
-        color: "#fff",
-        fontSize: 16,
-        fontWeight: "600",
-    },
+    container: { flex: 1, justifyContent: "center", alignItems: "center", padding: 20, backgroundColor: "#fff" },
+    title: { fontSize: 26, fontWeight: "bold", marginBottom: 20 },
+    image: { width: 250, height: 250, borderRadius: 10, marginBottom: 20 },
+    instruction: { fontSize: 16, color: "#555", marginBottom: 15 },
+    refreshButton: { backgroundColor: "#007BFF", paddingVertical: 12, paddingHorizontal: 25, borderRadius: 8 },
+    refreshText: { color: "#fff", fontSize: 16, fontWeight: "600" },
 });
