@@ -22,7 +22,7 @@ export default function Splash() {
 
                 // Attendre 2 secondes avant d'aller au menu
                 setTimeout(() => {
-                    router.replace("/Menu");
+                    router.replace("/(tabs)/Menu");
                 }, 2000);
             } catch (error) {
                 console.warn("Erreur splash:", error);
