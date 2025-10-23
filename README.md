@@ -1,50 +1,12 @@
-# Welcome to your Expo app 👋
+TP - Chat is my best hybrid friend
+Dans ce TP, vous allez devoir créer une petite application, simple en terme de fonctionnalités. L'objectif est de démontrer votre inutilité à coder lorsque l'on commence à maitriser une technologie. Vous serez noté sur votre capacité à livrer une application fonctionnelle rapidement (7 points). Vous devrez également démontrer votre capacité à maintenir un projet propre et bien documenté avec un Readme.md pertinent (3 points). Et vous serez noté sur votre utilisation pertinente d'un LLM comme assistant (10 points).
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Livrables
+Projet Github contenant le code source de l'application. Un fichier Readme détaillé sur la stack technique utilisée, les fonctionnalités de l'application et la manière de la lancer. Un fichier llm-prompts.md contenant les questions posées à votre assistant LLM et ses réponses. Un partage des différents channels de communication dans ChatGPT avec la fonctionnalité Share à rajouter dans le fichier llm-prompts.md
 
-## Get started
+Fonctionnalités
+L'application doit permettre d'afficher un splash screen avec un message de bienvenue : "Bienvenue sur Chat is my best hybrid friend". Le fond d'écran doit être bleu clair si la batterie de l'appareil est supérieure à 50% et saumon si elle est inférieure à 50%. La luminosité de l'écran doit être réglée assez élévée pour que le message soit bien visible. Sinon baisser la luminosité. Un menu permettra de choisir entre 3 options : "Chat", "Dog" et "Quit". Quit = ferme l'application. Chat = affiche un chat Dog = lance un appel à une API pour afficher une image de chien
 
-1. Install dependencies
+Quand on clique sur le chat, un son de chat doit être joué. Quand on clique sur le chien, prépare un sms avec le texte "Je n'aime pas les chats" à envoyer au numéro 06 06 06 06 06 Un autre onglet, Carte, permettra d'afficher votre position sur une carte, je veux au moins voir toulon et paris sur la carte sans devoir dézoomer.
 
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Stockez le nombre de clics sur le chat et le chien et affichez-les dans un menu "Clicker" avec un bouton pour réinitialiser les compteurs. Le nombre de clics doit être sauvegardé pour un prochain lancement de l'application.
