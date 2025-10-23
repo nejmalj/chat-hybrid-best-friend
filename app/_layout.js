@@ -1,20 +1,13 @@
 import { Stack } from "expo-router";
 
-export default function Layout() {
+export default function RootLayout() {
     return (
-        <Stack screenOptions={{ headerShown: true }}>
-            {/* Route initiale (accueil) */}
-            <Stack.Screen name="index" options={{ headerShown: false }} />
-
-            {/* Splash Screen */}
-            <Stack.Screen name="Splash" options={{ headerShown: false }} />
-
-            {/* Autres écrans */}
-            <Stack.Screen name="Menu" options={{ title: "Menu Principal" }} />
+        <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="index" />
+            <Stack.Screen name="Splash" />
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen name="Chat" options={{ title: "Chat" }} />
             <Stack.Screen name="Dog" options={{ title: "Dog" }} />
-            <Stack.Screen name="Carte" options={{ title: "Carte" }} />
-            <Stack.Screen name="Clicker" options={{ title: "Clicker" }} />
         </Stack>
     );
 }
